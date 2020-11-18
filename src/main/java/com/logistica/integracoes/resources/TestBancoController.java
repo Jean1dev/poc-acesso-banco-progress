@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @RestController
-@RequestMapping("teste")
+@RequestMapping("sql")
 public class TestBancoController {
 
     @PersistenceContext
@@ -24,8 +24,8 @@ public class TestBancoController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("teste2")
-    public ResponseEntity teste2() {
+    @GetMapping("doc-fisico")
+    public ResponseEntity selectFromDocFisico() {
         String query = "SELECT d.dt-emissao AS 'data-emissao'," +
                 "       d.nro-docto AS 'documento-origem-id' " +
                 "  FROM doc-fisico AS 'd', rat-lote AS 'r'" +

@@ -1,4 +1,4 @@
-package com.logistica.integracoes.crud.domain.docpendente;
+package com.logistica.integracoes.domain.docpendente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +24,15 @@ public class DocPendenteController {
     public ResponseEntity getAllByProjection() {
         List<DocPendente> all = repository.findAll();
         List<IProjection> teste = repository.findByProjectionNonNativeQuery();
-        return ResponseEntity.ok(repository.findByProjection());
+        return ResponseEntity.ok(repository.findByRawQuery());
     }
 
     @GetMapping(path = "by-em")
     public List<IProjection> getAllByEm() {
-        em.createNativeQuery("select d.referencia, d.\"data-movto\" from PUB.\"doc-pendente\" d")
+        List resultList = em.createNativeQuery("select d.referencia, d.\"data-movto\" from PUB.\"doc-pendente\" d", IProjection.class)
                 .getResultList();
 
-        return em.createQuery("select referencia as referencia from DocPendente", IProjection.class).getResultList();
+        return em.createQuery("select referencia as referencia, dataMovto from DocPendente")
+                .getResultList();
     }
 }

@@ -1,4 +1,4 @@
-package com.logistica.integracoes.crud.domain.docpendente;
+package com.logistica.integracoes.domain.docpendente;
 
 import java.util.Date;
 
