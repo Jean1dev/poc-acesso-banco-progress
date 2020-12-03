@@ -1,4 +1,4 @@
-package com.logistica.integracoes.domain.docpendente;
+package com.logistica.integracoes.db.ems2cad.domain.docpendente;
 
 import java.util.Date;
 

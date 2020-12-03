@@ -1,4 +1,4 @@
-package com.logistica.integracoes.domain.turno;
+package com.logistica.integracoes.db.ems2cad.domain.turno.turno;
 
 import lombok.*;
 
