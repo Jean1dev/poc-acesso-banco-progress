@@ -1,4 +1,4 @@
-package com.logistica.integracoes.domain.turno;
+package com.logistica.integracoes.db.ems2cad.domain.turno.turno;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

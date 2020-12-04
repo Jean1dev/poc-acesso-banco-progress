@@ -5,9 +5,22 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.ProgressDialect
 
+ems2cad:
   datasource:
     platform: openedge
-    url: jdbc:datadirect:openedge://deserto:21039;databaseName=ems2cad
+#    url: jdbc:datadirect:openedge://deserto:21039;databaseName=ems2cad
+    jdbc-url: jdbc:datadirect:openedge://deserto:21039;databaseName=ems2cad
     username: pub
     password: pub
-    driverClassName: com.ddtek.jdbc.openedge.OpenEdgeDriver
+#    driverClassName: com.ddtek.jdbc.openedge.OpenEdgeDriver
+    driver-class-name: com.ddtek.jdbc.openedge.OpenEdgeDriver
+
+ems2mov:
+  datasource:
+    platform: openedge
+#    url: jdbc:datadirect:openedge://deserto:21039;databaseName=ems2mov
+    jdbc-url: jdbc:datadirect:openedge://deserto:21030;databaseName=ems2mov
+    username: pub
+    password: pub
+#    driverClassName: com.ddtek.jdbc.openedge.OpenEdgeDriver
+    driver-class-name: com.ddtek.jdbc.openedge.OpenEdgeDriver

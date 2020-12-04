@@ -13,12 +13,18 @@ import java.util.List;
 @RequestMapping("sql")
 public class TestBancoController {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @PersistenceContext(unitName = "ems2mov")
+    private EntityManager ems2mov;
+
+    @PersistenceContext(unitName = "ems2cad")
+    private EntityManager ems2Cad;
 
     @GetMapping
     public ResponseEntity teste() {
-        List list = entityManager.createNativeQuery("SELECT * FROM PUB.DEPOSITO WHERE 'cod-depos' = 'W05'")
+        List resultList = ems2Cad.createNativeQuery("SELECT \"cod-emitente\", \"cod-bem\", \"cod_espec_bem\", \"des-onus\", \"log-seguro\", \"log-penhor\", \"dat-penhor\", \"des-bem\", \"val-bem\", \"char-1\", \"char-2\", \"dec-1\", \"dec-2\", \"int-1\", \"int-2\", \"log-1\", \"log-2\", \"data-1\", \"data-2\", \"num-seq-bem\"\n" +
+                "FROM PUB.\"gg-bem\"\n").getResultList();
+
+        List list = ems2mov.createNativeQuery("SELECT * FROM PUB.\"mi-filtro\" ")
                 .getResultList();
 
         return ResponseEntity.ok(list);
@@ -34,7 +40,7 @@ public class TestBancoController {
                 "   AND d.'nro-docto'   = r.'nro-docto' " +
                 "   AND r.'cod-depos'   = 'w05' ";
 
-        List list = entityManager.createNativeQuery(query).getResultList();
+        List list = ems2mov.createNativeQuery(query).getResultList();
         return ResponseEntity.ok(list);
     }
 }
